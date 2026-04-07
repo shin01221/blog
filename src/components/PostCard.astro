@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  slug: string;
+}
+
+const { title, description, pubDate, slug } = Astro.props;
+
+const formattedDate = new Date(pubDate).toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<a href={`/blog/${slug}/`} class="post-card" id={`post-${slug}`}>
+  <div class="post-card-meta">
+    <span class="post-card-date">
+      <span>📅</span> {formattedDate}
+    </span>
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <span class="post-card-arrow">→</span>
+</a>

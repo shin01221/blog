@@ -1,0 +1,14 @@
+---
+interface Props {
+  tag: string;
+  count?: number;
+  large?: boolean;
+}
+
+const { tag, count, large = false } = Astro.props;
+---
+
+<a href={`/tags/${tag}/`} class={`tag ${large ? 'tag-large' : ''}`} id={`tag-${tag}`}>
+  #{tag}
+  {count !== undefined && <span class="tag-count">({count})</span>}
+</a>

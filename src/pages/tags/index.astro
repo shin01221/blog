@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagBadge from '../../components/TagBadge.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog')).filter((post) => !post.data.draft);
+
+// Collect all tags with counts
+const tagMap = new Map<string, number>();
+allPosts.forEach((post) => {
+  post.data.tags?.forEach((tag) => {
+    tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
+  });
+});
+
+const sortedTags = [...tagMap.entries()].sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Tags — Medhat's Blog" description="Browse all blog post tags.">
+  <div class="about-container animate-in">
+    <div class="about-header">
+      <h1>Tags</h1>
+      <p>Browse posts by topic</p>
+    </div>
+
+    {sortedTags.length > 0 ? (
+      <div class="tags-grid">
+        {sortedTags.map(([tag, count]) => (
+          <TagBadge tag={tag} count={count} large />
+        ))}
+      </div>
+    ) : (
+      <p style="text-align: center; color: var(--color-text-muted); padding: var(--space-3xl) 0;">
+        No tags yet.
+      </p>
+    )}
+  </div>
+</BaseLayout>
