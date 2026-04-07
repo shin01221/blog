@@ -15,5 +15,8 @@
     "@astrojs/netlify": "^7.0.6",
     "astro": "^6.1.4",
     "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "node-gyp": "^10.3.0"
   }
 }
