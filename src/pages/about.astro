@@ -1,59 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialList from '../components/SocialList.astro';
 ---
 
-<BaseLayout title="About — Medhat's Blog" description="Learn more about Medhat and this blog.">
-  <div class="about-container animate-in">
-    <div class="about-header">
-      <h1>About Me</h1>
-      <p>Technical writer, cybersecurity enthusiast, and lifelong learner.</p>
-    </div>
+<BaseLayout title="About — Mohamed Medhat" description="DevOps engineer, Linux enthusiast, and lifelong learner.">
+  <div class="about-container">
+    <h1>About Me</h1>
 
-    <div class="about-content">
-      <p>
-        Hey there! I'm <strong>Medhat</strong>, and this is my corner of the internet where I write about 
-        the things I learn and find interesting. From cybersecurity deep dives to handy development tools,
-        I aim to break down complex topics into clear, digestible posts.
-      </p>
+    <p>
+      Hey there! I'm <strong>Mohamed Medhat</strong> (aka Medhat), a self-taught DevOps engineer 
+      from Egypt. I'm passionate about Linux, infrastructure automation, and building reliable, 
+      scalable systems. I believe in learning by doing — and writing about it.
+    </p>
 
-      <h2>What I Write About</h2>
-      <p>
-        This blog focuses on practical, real-world technical topics. Here's what you'll find:
-      </p>
+    <p>
+      Currently, I'm pursuing my B.Sc. in Computer Science at Menofia University while working on 
+      hands-on projects involving Docker, Kubernetes, Ansible, and Linux system administration. 
+      My goal is to join a team where I can contribute to robust infrastructure and keep growing 
+      as a DevOps engineer.
+    </p>
 
-      <ul>
-        <li>🔒 Cybersecurity concepts & practices</li>
-        <li>🛠️ Developer tools & workflows</li>
-        <li>🐧 Linux tips & tricks</li>
-        <li>💡 Personal insights & learnings</li>
-        <li>📚 Technical tutorials & guides</li>
-        <li>🌐 Web development best practices</li>
-      </ul>
+    <h2>Skills &amp; Tools</h2>
+    <ul>
+      <li>Docker &amp; Docker Compose</li>
+      <li>Kubernetes &amp; Minikube</li>
+      <li>Ansible &amp; Terraform</li>
+      <li>CI/CD with Jenkins</li>
+      <li>Linux (Arch, RHEL, Debian)</li>
+      <li>Bash &amp; Python Scripting</li>
+      <li>MariaDB &amp; MySQL</li>
+      <li>AWS (EC2, S3, IAM)</li>
+      <li>Git &amp; GitHub</li>
+      <li>LVM &amp; LUKS Encryption</li>
+      <li>Networking (subnetting, routing)</li>
+      <li>QEMU/KVM &amp; Virtualization</li>
+    </ul>
 
-      <h2>Why This Blog?</h2>
-      <p>
-        I believe in learning by doing — and writing about it. Every post here is a result of 
-        hands-on experience, research, and a desire to share knowledge with others. Whether you're 
-        a beginner or an experienced developer, I hope you find something useful here.
-      </p>
+    <h2>Projects</h2>
 
-      <h2>Tech Stack</h2>
-      <p>
-        This blog is built with modern, minimal technology:
-      </p>
-      <ul>
-        <li>⚡ Astro — Static site generator</li>
-        <li>🎨 Vanilla CSS — Custom design system</li>
-        <li>🔤 Markdown — Content authoring</li>
-        <li>☁️ Netlify — Hosting & serverless functions</li>
-      </ul>
+    <p><strong>Docker Multi-Service Deployment Stack</strong><br>
+    Multi-container application with MySQL, Nginx, and Flask, orchestrated via Docker Compose.</p>
 
-      <h2>Connect</h2>
-      <p>
-        Got questions, feedback, or just want to chat? Feel free to reach out on 
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a> 
-        or <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>.
-      </p>
-    </div>
+    <p><strong>Kubernetes Declarative Infrastructure</strong><br>
+    Kubernetes cluster with declarative YAML manifests, deployed on Minikube with AWS EBS integration.</p>
+
+    <p><strong>Samba Active Directory Domain Controller</strong><br>
+    Full AD DC using Samba 4, Kerberos, DNS, and LDAP on Ubuntu Server with Debian clients.</p>
+
+    <p><strong>LVM-on-LUKS Encrypted Storage</strong><br>
+    Full-disk encryption with LUKS and logical volume management on Arch Linux.</p>
+
+    <h2>Grad Project</h2>
+    <p>
+      Built a complete Active Directory Domain Controller with Samba 4, implementing centralized 
+      authentication via Kerberos, DNS/LDAP/ time sync services, LVM-based storage, 
+      and AD group-based access control using SSSD and Realmd.
+    </p>
+
+    <h2>Currently Learning</h2>
+    <ul>
+      <li>Deeper Kubernetes (Helm, operators)</li>
+      <li>Advanced CI/CD pipelines</li>
+      <li>Terraform &amp; IaC best practices</li>
+      <li>Monitoring with Prometheus &amp; Grafana</li>
+      <li>Cloud-native architecture</li>
+    </ul>
+
+    <h2>Let's Connect</h2>
+    <p>
+      I'm always open to new opportunities, collaborations, or just a good tech chat. 
+      Find me on:
+    </p>
+    <SocialList />
   </div>
 </BaseLayout>

@@ -12,9 +12,8 @@ interface Props {
   heroImage?: string;
 }
 
-const { title, description, pubDate, updatedDate, tags = [], author = 'Medhat', heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], author = 'Mohamed Medhat', heroImage } = Astro.props;
 
-// Calculate reading time
 const content = await Astro.slots.render('default');
 const words = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
 const readingTime = Math.max(1, Math.ceil(words / 200));
@@ -34,28 +33,20 @@ const formattedUpdateDate = updatedDate
   : null;
 ---
 
-<BaseLayout title={`${title} — Medhat's Blog`} description={description} ogImage={heroImage}>
-  <a href="/" class="back-link">
-    <span>←</span> Back to all posts
-  </a>
+<BaseLayout title={`${title} — Medhat's Blog`} description={description}>
+  <a href="/" class="back-link">&larr; Back to all posts</a>
 
   <article>
     <header class="post-header">
       <div class="post-meta">
-        <span class="post-meta-item">
-          <span>📅</span> {formattedDate}
-        </span>
-        <span class="post-meta-item">
-          <span>⏱️</span> {readingTime} min read
-        </span>
-        <span class="post-meta-item">
-          <span>✍️</span> {author}
-        </span>
+        <span>{formattedDate}</span>
+        <span>{readingTime} min read</span>
+        <span>{author}</span>
       </div>
       <h1>{title}</h1>
       {formattedUpdateDate && (
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: var(--space-sm);">
-          Updated on {formattedUpdateDate}
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted);">
+          Updated {formattedUpdateDate}
         </p>
       )}
       {tags.length > 0 && (

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
+import SocialList from '../components/SocialList.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = (await getCollection('blog'))
@@ -8,41 +8,49 @@ const allPosts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="Medhat's Blog — Technical Write-ups & Insights">
-  <section class="hero animate-in">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Technical Blog
-    </div>
-    <h1>
-      Welcome to <span class="accent">Medhat's Blog</span>
-    </h1>
+<BaseLayout title="Medhat's Blog — DevOps & Linux Engineering">
+  <section class="intro">
+    <h1>Hello, I'm Mohamed Medhat</h1>
     <p>
-      Exploring cybersecurity, development tools, and sharing technical insights.
-      Short articles, clear explanations, and practical knowledge.
+      I'm a DevOps engineer passionate about Linux, infrastructure automation, and building reliable systems.
+      This is my personal blog where I write about what I learn along the way.
     </p>
+    <SocialList />
   </section>
 
-  <section class="posts-section">
+  <section>
     <div class="section-header">
-      <h2 class="section-title">Latest Posts</h2>
+      <h2>Posts</h2>
+      {allPosts.length > 0 && <a href="/tags" class="cactus-link">Tags</a>}
     </div>
 
     {allPosts.length > 0 ? (
-      <div class="post-grid">
-        {allPosts.map((post, index) => (
-          <div class={`animate-in animate-delay-${Math.min(index + 1, 3)}`}>
-            <PostCard
-              title={post.data.title}
-              description={post.data.description}
-              pubDate={post.data.pubDate}
-              slug={post.id}
-            />
-          </div>
-        ))}
-      </div>
+      <ul class="post-list">
+        {allPosts.map((post) => {
+          const date = new Date(post.data.pubDate).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          });
+          return (
+            <li>
+              <span class="post-date">{date}</span>
+              <div>
+                <a href={`/blog/${post.id}/`} class="post-title">{post.data.title}</a>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <span class="post-tags">
+                    {post.data.tags.map((tag) => (
+                      <span class="post-tag">#{tag}</span>
+                    ))}
+                  </span>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     ) : (
-      <p style="text-align: center; color: var(--color-text-muted); padding: var(--space-3xl) 0;">
+      <p style="color: var(--color-text-muted); padding: var(--space-2xl) 0;">
         No posts yet. Check back soon!
       </p>
     )}
