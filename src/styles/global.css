@@ -584,6 +584,50 @@ a:hover {
   font-style: italic;
 }
 
+.post-content .markdown-alert {
+  border-left: 4px solid var(--color-accent);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-lg) 0;
+  background: var(--color-accent-bg);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  font-style: normal;
+}
+
+.post-content .markdown-alert-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.post-content .markdown-alert-title svg {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+}
+
+.post-content .markdown-alert-note {
+  border-left-color: var(--color-accent);
+}
+
+.post-content .markdown-alert-warning {
+  border-left-color: #e67e22;
+}
+
+.post-content .markdown-alert-important {
+  border-left-color: #8250df;
+}
+
+.post-content .markdown-alert-caution {
+  border-left-color: #cf222e;
+}
+
+.post-content .markdown-alert-tip {
+  border-left-color: #1a7f37;
+}
+
 .post-content code {
   font-family: var(--font-mono);
   font-size: 0.88em;
