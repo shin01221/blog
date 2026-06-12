@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import TagBadge from '../components/TagBadge.astro';
+import Comments from '../components/Comments.astro';
 
 interface Props {
   title: string;
@@ -60,4 +61,6 @@ const formattedUpdateDate = updatedDate
       <slot />
     </div>
   </article>
+
+  <Comments />
 </BaseLayout>

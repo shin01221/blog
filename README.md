@@ -1,43 +1,67 @@
-# Astro Starter Kit: Minimal
+# Medhat's Blog
 
-```sh
-npm create astro@latest -- --template minimal
+Personal blog about DevOps, Linux, and infrastructure — built with [Astro](https://astro.build) and hosted on [Netlify](https://netlify.com).
+
+**Live site:** https://medhats-blog.netlify.app
+
+---
+
+## Quick Start
+
+```bash
+npm install        # Install dependencies
+npm run dev        # Start dev server (localhost:4321)
+npm run build      # Build for production → dist/
+npm run deploy     # Deploy to Netlify
+npm run build && npm run deploy  # Build + deploy
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Adding a Post
 
-## 🚀 Project Structure
+Create a `.md` file in `src/content/blog/`:
 
-Inside of your Astro project, you'll see the following folders and files:
+```markdown
+---
+title: "My Post"
+description: "Brief description"
+pubDate: 2025-01-01
+tags: ["linux", "docker"]
+draft: false
+---
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Content here in **Markdown**.
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Then `npm run build && npm run deploy`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Project Structure
 
-Any static assets, like images, can be placed in the `public/` directory.
+```
+src/
+├── components/     ← UI (Header, Footer, PostCard, SocialList, TagBadge)
+├── content/blog/   ← Blog posts (.md)
+├── layouts/        ← Page templates (BaseLayout, PostLayout)
+├── pages/          ← Routes (home, about, tags, blog/[slug], admin)
+└── styles/         ← global.css (all site styles)
+public/images/      ← Static images
+```
 
-## 🧞 Commands
+## Customizing
 
-All commands are run from the root of the project, from a terminal:
+- **Colors** — edit CSS variables in `src/styles/global.css` (`--color-accent`, `--color-bg`, etc.)
+- **Components** — edit files in `src/components/`
+- **Layouts** — edit files in `src/layouts/`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Comments
 
-## 👀 Want to learn more?
+Blog posts use [Giscus](https://giscus.app) for comments.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**To enable:** 
+1. Go to your repo **Settings → General → Discussions** and enable it
+2. Visit [giscus.app](https://giscus.app), enter `shin01221/blog`
+3. Copy the `data-repo-id`, `data-category`, and `data-category-id` values
+4. Paste them into `src/components/Comments.astro`
+
+## License
+
+MIT
