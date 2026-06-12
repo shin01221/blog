@@ -4,7 +4,7 @@ const currentPath = Astro.url.pathname;
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
+    <a href="/blog/" class="nav-logo">
       <svg viewBox="0 0 272 480" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill="#2bbc8a" d="M181.334 93.333v-40L226.667 80v40zM136.001 53.333 90.667 26.667v426.666L136.001 480zM45.333 220 0 193.334v140L45.333 360z"/>
         <path fill="#3dd68c" d="M90.667 26.667 136.001 0l45.333 26.667-45.333 26.666zM181.334 53.33l45.333-26.72L272 53.33 226.667 80zM136 240l-45.333-26.67v53.34zM0 193.33l45.333-26.72 45.334 26.72L45.333 220zM181.334 93.277 226.667 120l-45.333 26.67z"/>
@@ -14,8 +14,8 @@ const currentPath = Astro.url.pathname;
     </a>
 
     <ul class="nav-links">
-      <li><a href="/" class={`nav-link ${currentPath === '/' ? 'active' : ''}`}>Home</a></li>
-      <li><a href="/about" class={`nav-link ${currentPath === '/about/' || currentPath === '/about' ? 'active' : ''}`}>About</a></li>
+      <li><a href="/blog/" class={`nav-link ${currentPath === '/blog/' ? 'active' : ''}`}>Home</a></li>
+      <li><a href="/blog/about" class={`nav-link ${currentPath === '/blog/about/' || currentPath === '/blog/about' ? 'active' : ''}`}>About</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -37,8 +37,8 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <div class="mobile-nav" id="mobile-nav">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
+    <a href="/blog/">Home</a>
+    <a href="/blog/about">About</a>
   </div>
 </nav>
 
@@ -118,7 +118,7 @@ const currentPath = Astro.url.pathname;
   }
 
   function resolveUrl(url) {
-    const base = document.documentElement.getAttribute('data-base') || '/';
+    const base = window.__BASE__ || '/';
     return base.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
   }
 

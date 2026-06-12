@@ -21,7 +21,7 @@ const allPosts = (await getCollection('blog'))
   <section>
     <div class="section-header">
       <h2>Posts</h2>
-      {allPosts.length > 0 && <a href="/tags" class="cactus-link">Tags</a>}
+      {allPosts.length > 0 && <a href="/blog/tags" class="cactus-link">Tags</a>}
     </div>
 
     {allPosts.length > 0 ? (
@@ -36,7 +36,7 @@ const allPosts = (await getCollection('blog'))
             <li>
               <span class="post-date">{date}</span>
               <div>
-                <a href={`/${post.id}/`} class="post-title">{post.data.title}</a>
+                <a href={`/blog/${post.id}/`} class="post-title">{post.data.title}</a>
                 {post.data.tags && post.data.tags.length > 0 && (
                   <span class="post-tags">
                     {post.data.tags.map((tag) => (

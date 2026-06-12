@@ -13,9 +13,10 @@ const formattedDate = new Date(pubDate).toLocaleDateString('en-US', {
   day: 'numeric',
   year: 'numeric',
 });
+const base = '/blog';
 ---
 
-<a href={`/${slug}/`} class="post-card">
+<a href={`${base}/${slug}/`} class="post-card">
   <div class="post-card-header">
     <span>{formattedDate}</span>
   </div>

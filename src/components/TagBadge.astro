@@ -6,9 +6,10 @@ interface Props {
 }
 
 const { tag, count, large = false } = Astro.props;
+const base = '/blog';
 ---
 
-<a href={`/tags/${tag}/`} class="tag">
+<a href={`${base}/tags/${tag}/`} class="tag">
   #{tag}
   {count !== undefined && <span style="opacity: 0.6; margin-left: 2px;">({count})</span>}
 </a>
