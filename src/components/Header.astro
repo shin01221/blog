@@ -107,7 +107,7 @@ const currentPath = Astro.url.pathname;
     if (!pagefind) {
       await new Promise((resolve, reject) => {
         const s = document.createElement('script');
-        s.src = '/pagefind/pagefind.js';
+        s.src = resolveUrl('/pagefind/pagefind.js');
         s.onload = resolve;
         s.onerror = reject;
         document.head.appendChild(s);
@@ -115,6 +115,11 @@ const currentPath = Astro.url.pathname;
       pagefind = window.pagefind;
     }
     return pagefind;
+  }
+
+  function resolveUrl(url) {
+    const base = document.documentElement.getAttribute('data-base') || '/';
+    return base.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
   }
 
   async function doSearch(query) {
@@ -138,7 +143,7 @@ const currentPath = Astro.url.pathname;
       for (const r of result.results) {
         const data = await r.data();
         html += `
-          <a href="${data.url}" class="search-result-item">
+          <a href="${resolveUrl(data.url)}" class="search-result-item">
             <div class="search-result-title">${data.title}</div>
             <div class="search-result-excerpt">${data.excerpt}</div>
           </a>
@@ -147,7 +152,7 @@ const currentPath = Astro.url.pathname;
       searchResults.innerHTML = html;
     } catch {
       try {
-        const res = await fetch('/search-index.json');
+        const res = await fetch(resolveUrl('/search-index.json'));
         const posts = await res.json();
         const q = query.toLowerCase();
         const results = posts.filter(p =>
@@ -162,7 +167,7 @@ const currentPath = Astro.url.pathname;
         }
 
         searchResults.innerHTML = results.map(p => `
-          <a href="${p.url}" class="search-result-item">
+          <a href="${resolveUrl(p.url)}" class="search-result-item">
             <div class="search-result-title">${p.title}</div>
             <div class="search-result-excerpt">${p.description}</div>
           </a>

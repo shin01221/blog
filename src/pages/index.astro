@@ -36,7 +36,7 @@ const allPosts = (await getCollection('blog'))
             <li>
               <span class="post-date">{date}</span>
               <div>
-                <a href={`/blog/${post.id}/`} class="post-title">{post.data.title}</a>
+                <a href={`/${post.id}/`} class="post-title">{post.data.title}</a>
                 {post.data.tags && post.data.tags.length > 0 && (
                   <span class="post-tags">
                     {post.data.tags.map((tag) => (

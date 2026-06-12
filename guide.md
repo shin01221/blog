@@ -4,7 +4,7 @@ Quick reference for managing this Astro blog.
 
 ---
 
-> **Live site:** https://medhat-blog.netlify.app
+> **Live site:** https://shin01221.github.io/blog
 
 ## Adding a New Blog Post
 
@@ -112,7 +112,7 @@ All UI components live in `src/components/`. Edit them to change the site's look
 src/components/
 ├── Header.astro       ← Navigation bar (logo, links, theme toggle, hamburger menu)
 ├── Footer.astro       ← Footer with links and copyright
-├── SocialList.astro   ← Social icons (GitHub, X, LinkedIn)
+├── SocialList.astro   ← Social icons (GitHub, X, LinkedIn, RSS)
 ├── PostCard.astro     ← Card layout used on tag pages (title, desc, date)
 └── TagBadge.astro     ← Tag link pill (#tagname)
 ```
@@ -171,6 +171,18 @@ src/styles/global.css  ← All site styles (colors, layout, typography)
 
 ---
 
+## RSS Feed
+
+The RSS feed is auto-generated at **`/rss.xml`** (`https://shin01221.github.io/blog/rss.xml`).
+
+- **It updates automatically** — whenever you push a new post, the build regenerates it.
+- It includes all non-draft posts sorted by `pubDate`.
+- An RSS icon link is in the social list on the homepage and about page.
+
+No manual steps needed to update the RSS feed.
+
+---
+
 ## Commands
 
 ### Development
@@ -183,21 +195,27 @@ npm run dev
 npm run preview
 ```
 
-### Build & Deploy to Netlify
+### Build
 
 ```bash
 # Build the static site to dist/
 npm run build
-
-# Deploy to Netlify
-npm run deploy
 ```
 
-### Or combined
+### Deploy (auto via GitHub Actions)
+
+Push to `main` branch — the GitHub Actions workflow automatically:
+1. Installs dependencies
+2. Builds the site
+3. Deploys to GitHub Pages
 
 ```bash
-npm run build && npm run deploy
+git add .
+git commit -m "add my new post"
+git push origin main   # triggers deploy
 ```
+
+No separate deploy command needed.
 
 ---
 
@@ -224,7 +242,7 @@ Set `draft: false` or remove the line when ready to publish.
 2. Edit the `.md` file
 3. Update `updatedDate` in frontmatter (optional)
 4. Run `npm run build` to verify it compiles
-5. Run `npm run deploy` to publish
+5. Commit and push to `main` to deploy
 
 ---
 
@@ -250,27 +268,33 @@ Set `draft: false` or remove the line when ready to publish.
 - Clear browser cache (Ctrl+Shift+R / Cmd+Shift+R)
 - Check `localStorage.getItem('theme')` in browser devtools
 
+### GitHub Pages not updating?
+- Check **Actions** tab for workflow status
+- Ensure GitHub Pages is enabled: Settings → Pages → Source: **GitHub Actions**
+
 ---
 
 ## File Structure
 
 ```
-/Media/blog/
+/
 ├── src/
 │   ├── components/        ← UI components (Header, Footer, PostCard, etc.)
 │   ├── content/
 │   │   └── blog/          ← Blog posts (.md files) go here
 │   ├── layouts/           ← Page layout templates
-│   ├── pages/             ← Route pages (home, about, tags, admin)
+│   ├── pages/             ← Route pages (home, about, tags, [slug])
 │   │   ├── index.astro    ← Homepage
 │   │   ├── about.astro    ← About page
-│   │   ├── blog/          ← Blog post routing
-│   │   └── tags/          ← Tag pages
+│   │   ├── [slug].astro   ← Blog post (dynamic route)
+│   │   ├── tags/          ← Tag pages
+│   │   ├── rss.xml.ts     ← RSS feed generator
+│   │   └── search-index.json.ts ← Search index
 │   └── styles/            ← Global CSS
 ├── public/
 │   └── images/            ← Static images
 ├── dist/                  ← Build output (auto-generated, don't edit)
-├── netlify.toml           ← Deployment config
+├── .github/workflows/     ← GitHub Actions deploy workflow
 └── package.json           ← Dependencies
 ```
 
@@ -280,4 +304,4 @@ Set `draft: false` or remove the line when ready to publish.
 
 - [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
 - [Markdown Guide](https://www.markdownguide.org/)
-- [Netlify CLI Docs](https://cli.netlify.com/)
+- [GitHub Pages Docs](https://docs.github.com/en/pages)

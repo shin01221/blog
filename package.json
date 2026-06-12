@@ -10,17 +10,15 @@
     "build": "astro build && npx pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "netlify deploy --prod --dir=dist"
+    "deploy": "npm run build"
   },
   "dependencies": {
-    "@astrojs/netlify": "^7.0.6",
+    "@astrojs/rss": "^4.0.18",
     "astro": "^6.1.4",
     "remark-github-alerts": "^0.1.1",
     "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "netlify-cli": "^24.10.0",
-    "node-gyp": "^10.3.0",
     "pagefind": "^1.5.2"
   }
 }
