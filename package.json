@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npx pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "netlify deploy --prod --dir=dist"
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "netlify-cli": "^24.10.0",
-    "node-gyp": "^10.3.0"
+    "node-gyp": "^10.3.0",
+    "pagefind": "^1.5.2"
   }
 }
