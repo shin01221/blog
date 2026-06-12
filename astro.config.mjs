@@ -4,7 +4,7 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://medhats-blog.netlify.app',
+  site: 'https://medhat-blog.netlify.app',
   adapter: netlify(),
   output: 'static',
   markdown: {

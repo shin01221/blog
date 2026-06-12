@@ -4,7 +4,7 @@ Quick reference for managing this Astro blog.
 
 ---
 
-> **Live site:** https://medhats-blog.netlify.app
+> **Live site:** https://medhat-blog.netlify.app
 
 ## Adding a New Blog Post
 

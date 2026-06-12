@@ -2,7 +2,7 @@
 
 Personal blog about DevOps, Linux, and infrastructure — built with [Astro](https://astro.build) and hosted on [Netlify](https://netlify.com).
 
-**Live site:** https://medhats-blog.netlify.app
+**Live site:** https://medhat-blog.netlify.app
 
 ---
 
